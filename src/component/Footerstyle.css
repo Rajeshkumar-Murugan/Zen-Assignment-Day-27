@@ -1,0 +1,50 @@
+#contactForm, #contactDetails, .contactTitle{
+    background-color: whitesmoke;
+    padding-top:20px;
+    padding-bottom:20px;
+  
+}
+
+#contactForm,#contactDetails{
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.footerdata {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.fa-facebook-square{
+    color: #2f2faf;
+}
+.fa-twitter{
+    color:#22c2d4
+}
+.fa-whatsapp-square{
+    
+    color: #31db31;
+}
+.fa-youtube{
+    color: #fb0000;
+}
+.fa-instagram-square{
+    color: #fb0732;
+}
+
+.fa-facebook-square, .fa-youtube, .fa-twitter, .fa-whatsapp-square,.fa-instagram-square{
+    padding: 10px; 
+}
+#contactDetails{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+}
+
+.contactinform{
+    text-align: left;
+}

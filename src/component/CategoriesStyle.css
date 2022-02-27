@@ -1,0 +1,10 @@
+#modelimg{
+    
+    height: 200px;
+}
+.modelAlign{
+    display: flex;
+    overflow-x: scroll;
+  
+ }
+

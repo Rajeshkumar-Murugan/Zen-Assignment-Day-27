@@ -1,0 +1,28 @@
+.header{
+    background-color: black;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+  #logotitle{
+      color: whitesmoke;
+      font-family: 'Black Ops One', cursive;
+      font-size: 45px;
+        margin: 0px;      
+  }
+
+  @media (min-width: 280px) {
+
+  #logotitle{
+    font-size: 30px;
+  }
+  .header_logo{
+    width: 100px;
+  }
+}
+/*
+@media screen and (min-device-width: 481px) and (max-device-width: 768px) { 
+   
+}
+
+@media only screen and (max-device-width: 480px) {
+   
+} */
