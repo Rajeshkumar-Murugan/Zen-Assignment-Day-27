@@ -69,22 +69,7 @@ function AddModel() {
                   {formik.touched.Imageone && formik.errors.Imageone?(<div style={{color:"red"}}>{formik.errors.Imageone}</div>
                   ):null}
             </div>
-            <div className="col-md-6">
-
-                <label htmlFor="Imagetwo">Image 2 URL</label>
-                <input id="Imagetwo" name="Imagetwo" type="text"
-                  className="form-control" placeholder='Enter Imagetwo'
-                  onChange={formik.handleChange}
-                  value={formik.values.Imagetwo}/>
-                 
-            </div>
-            <div className="col-md-6">
-              <label htmlFor="Imagethree">Image 3 URL</label>
-                <input id="Imagethree" name="Imagethree" type="text"
-                  className="form-control" placeholder='Enter Imagethree'
-                  onChange={formik.handleChange}
-                  value={formik.values.Imagethree}/>
-             </div>
+            
             <div className="col-md-6">     
 
               <label htmlFor="Name">Name</label>
