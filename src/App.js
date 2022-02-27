@@ -5,7 +5,6 @@ import Footer from './component/Footer';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Categories from './component/Categories';
 import Home from './component/Home';
-
 import AddModel from './component/AddModel';
 import React from 'react';
 import EditModel from './component/EditModel';
