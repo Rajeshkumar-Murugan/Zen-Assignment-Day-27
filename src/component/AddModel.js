@@ -137,7 +137,7 @@ function AddModel() {
         onBlur={formik.handleBlur}
         style={{ display: 'block' }}
       >
-        <option value="" label="Select Movie Name" />
+        <option value="" label="Select option" />
         
         <option value='Yes' label='Yes' />
         <option value='No' label='No' />
