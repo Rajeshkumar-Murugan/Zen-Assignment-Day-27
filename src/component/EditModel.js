@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {React, useState, useEffect} from 'react';
 import {useNavigate,useParams} from 'react-router-dom'
+import env from "react-dotenv";
 
 function EditModel() {
   
@@ -35,8 +36,8 @@ function EditModel() {
 
    let getData = async()=>{
     try {
-        let res= await axios.get('https://61e2c3c93050a1001768226a.mockapi.io/3Dreams/'+params.id)  
-        let Editvalues = res.data
+        let res= await axios.get(env.API_URL+'model/'+params.id)  
+        let Editvalues = res.data.data[0]
 
         setImageone(Editvalues.Imageone)
         setImagetwo(Editvalues.Imagetwo)
@@ -62,10 +63,9 @@ function EditModel() {
 // Edit and save data using axios
 let save=async ()=>{
 try {
-  let res = await axios.put('https://61e2c3c93050a1001768226a.mockapi.io/3Dreams/'+params.id,{      
+  let res = await axios.put(env.API_URL+'edit-model/'+params.id,{      
   Imageone,Imagetwo,Imagethree,Name, width,height,Material,Age,Assembly,weight,Price,Category         
     })
-    console.log(res)
     history('/Categories')
 } catch (error) {
   alert("Error occured while updating the data please contact the developer")

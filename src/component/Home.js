@@ -4,9 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NewestPrint from './NewestPrint';
 import BestSeller from './BestSeller';
+import Head from './Head';
+import Footer from './Footer';
 
 function Home() {
   return <div>
+    <Head></Head>
       <div id='styleprop'>   
      <div className='container'>          
          <ControlledCarousel />
@@ -21,6 +24,7 @@ function Home() {
       </div>
       
      </div>
+     <Footer></Footer>
   </div>;
 }
 

@@ -3,6 +3,11 @@ import './CategoriesStyle.css';
 import {Card, Button } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
+import Head from './Head';
+import Footer from './Footer';
+import env from "react-dotenv";
+
+
 function Categories() {
 
   let [data,setData] =useState([])
@@ -17,10 +22,12 @@ function Categories() {
   //Fetching using Axios
   let getData = async()=>{
     try {
-      let d = await axios.get('https://61e2c3c93050a1001768226a.mockapi.io/3Dreams')
-    setData(d.data)
+    
+      let modeldata = await axios.get(env.API_URL)
+      let modelvalue = modeldata.data.data
+    setData(modelvalue)
     } catch (error) {
-      alert("Error occured while fetching the data please contact developer")
+      alert("Error Occured while fetching the data please contact developer")
       console.log(error)
     }
     
@@ -31,8 +38,8 @@ function Categories() {
 
   let handledelete = async(id)=>{
     try {
-     let res = await axios.delete('https://61e2c3c93050a1001768226a.mockapi.io/3Dreams/'+id)
-      console.log(res)
+     let res = await axios.delete(env.API_URL+'delete/'+id)
+      
       getData();
     } catch (error) {
       alert("Error occured while deleting the data please contact developer")
@@ -43,6 +50,7 @@ function Categories() {
   //Fetching the data from mockapi ends
 
   return (<div>
+    <Head></Head>
     <div className='container-fluid'>
       <div className='row'>
         
@@ -69,10 +77,10 @@ function Categories() {
               
             
              <Button variant="success edit" onClick={()=>{
-              Navigate('/EditModel/'+e.id) 
+              Navigate('/EditModel/'+e._id) 
              }}>Edit</Button> &nbsp;
 
-              <Button variant="danger delete" onClick={()=>handledelete(e.id)}>Delete</Button>
+              <Button variant="danger delete" onClick={()=>handledelete(e._id)}>Delete</Button>
               </div> 
               
               </Card.Body>
@@ -87,7 +95,7 @@ function Categories() {
         
       </div> 
     </div>
-      
+      <Footer></Footer>
 
   </div>);
 }

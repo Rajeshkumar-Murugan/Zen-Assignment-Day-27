@@ -1,36 +1,42 @@
 import './App.css';
-import Head from './component/Head';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './component/Footer';
+import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Categories from './component/Categories';
 import Home from './component/Home';
 import AddModel from './component/AddModel';
-import React from 'react';
 import EditModel from './component/EditModel';
+import Signin from './component/Signin';
+import SignUp from './component/SignUp';
+import env from "react-dotenv";
 
 
-export const Modelcontext = React.createContext();
 
 function App() {
-
+  console.log(env.API_URL)
   return (
-    <Router>
-     
-     <Head/>
-      <Routes>
-      <Route path='/' element={<Home/>}></Route>
-        <Route path='/Home' element={<Home/>}></Route>
-        <Route path='/EditModel/:id' element={<EditModel/>}></Route>
-        <Route path='/AddModel' element={<AddModel/>}></Route>
-        <Route path='/Categories' element={<Categories/>}></Route>
-        
-        
 
-      </Routes>
-      <Footer/> 
+<Router>
      
-      </Router>
+     
+     
+     <Routes>
+     
+     <Route path='/' element={<Signin/>}></Route>
+     <Route path='/Sign-up' element={<SignUp/>}></Route>
+       <Route path='/Home' element={<Home/>}></Route>
+       <Route path='/EditModel/:id' element={<EditModel/>}></Route>
+       <Route path='/AddModel' element={<AddModel/>}></Route>
+       <Route path='/Categories' element={<Categories/>}></Route>
+       
+       
+
+     </Routes>
+     
+    
+     </Router>
+     
+     
   );
 
 }

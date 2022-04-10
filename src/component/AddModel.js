@@ -3,6 +3,8 @@ import {React} from 'react';
 import {useNavigate} from 'react-router-dom'
 import {useFormik} from 'formik'
 import *as yup from 'yup'
+import Head from './Head';
+import env from "react-dotenv";
 
 function AddModel() {
   
@@ -45,7 +47,7 @@ function AddModel() {
 //Adding data using axios
   let save = async(data)=>{
     try {
-      let res =  await axios.post('https://61e2c3c93050a1001768226a.mockapi.io/3Dreams',data)
+      let res =  await axios.post(env.API_URL+'addmodel',data)
         console.log(res)
     history('/Categories')
       
@@ -57,6 +59,7 @@ function AddModel() {
   }
 
   return <div>
+    <Head></Head>
     <div className='container'>  
               <form className='row g-3' onSubmit={formik.handleSubmit}>
               <h4>Add/Update Model</h4> 
@@ -207,7 +210,8 @@ function AddModel() {
               </form>
 
    
-  </div></div>
+  </div>
+  </div>
   // </div>
 }
 
