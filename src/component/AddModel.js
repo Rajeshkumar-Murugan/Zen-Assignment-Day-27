@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import {useFormik} from 'formik'
 import *as yup from 'yup'
 import Head from './Head';
+import Footer from './Footer';
 import env from "react-dotenv";
 
 function AddModel() {
@@ -200,17 +201,15 @@ function AddModel() {
 
        {formik.touched.Category && formik.errors.Category?(<div style={{color:"red"}}>{formik.errors.Category}</div>):null}
   
-  </div>
-
-           
+  </div>          
                   <button type='submit' className='btn btn-primary'>
                   Add Model
                   </button>
 
               </form>
-
-   
   </div>
+  <Footer/>
+
   </div>
   // </div>
 }

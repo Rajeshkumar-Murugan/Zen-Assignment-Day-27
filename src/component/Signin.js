@@ -6,9 +6,7 @@ import {useNavigate} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import env from "react-dotenv";
 
-const MyContext = React.createContext({});
 
-export const Context = React.createContext();
  
 
 
@@ -28,10 +26,7 @@ function Signin() {
         }
       })
 
-      const [username, setUsername] = useState('')
-      const [email, setEmail] = useState('')
-      const [Phone, setPhone] = useState('')
-      const [loginstatus, setLoginstatus] = useState('')
+      
     
       const [status,setStatus]  = useState( '' );
       const [forgetPWDstatus, setforgetPWDstatus] = useState('')
@@ -45,10 +40,7 @@ function Signin() {
             {
               setStatus(res.data.message)
               if(res.data.message === "Login successfully"){
-                setUsername(res.data.data.name)
-                setEmail(res.data.data.email)
-                setPhone(res.data.data.phone)
-                setLoginstatus(res.data.message)
+               
                 history('/Home') 
               }
               else{
@@ -96,11 +88,11 @@ function Signin() {
 
   return (
     <div>
-        <MyContext.Provider value={{loginstatus,username,email,Phone}}>
-        
-<div className='container d-flex justify-content-center'>
+       
+<div className='container d-flex justify-content-center' style={{width:"400px"}}>
+  
     <div className='row'>
-    <img src='https://i.pinimg.com/originals/58/22/46/58224674a4868f695d1f0e4ff61bf959.gif' className="w-50 p-3 mx-auto"/>
+    <img src='https://cdn.dribbble.com/users/102974/screenshots/1976442/3dprinter_1.gif' class="img-fluid" alt="Responsive image" style={{height:"300px", padding:'0px'}}/>
 
     <h4 className='text-center contactTitle'>Sign In</h4> 
      <form onSubmit={formik.handleSubmit} name="loginform">
@@ -138,6 +130,8 @@ function Signin() {
                  <button className="btn btn-secondary">Sign Up</button>
             </Link>
             </div>
+            <br/> 
+            <br/> 
         </form>
 
         <div>
@@ -180,8 +174,8 @@ function Signin() {
             </div>
         </div>
         </div>
-     </MyContext.Provider>
      
+        
     </div>
   )
 }
