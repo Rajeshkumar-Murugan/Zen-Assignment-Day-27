@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useFormik} from 'formik'
 import *as yup from 'yup'
 import {useNavigate} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import env from "react-dotenv";
-
+import { toast } from 'react-toastify';
 
  
 
 
 function Signin() {
-    
+  let history = useNavigate()
+
+    useEffect(() => {
+      if(localStorage.getItem('auth')) history('/Home')
+    }, [])
+
     const formik = useFormik({
         initialValues:{ 
           email:'',
@@ -23,33 +28,36 @@ function Signin() {
         }),
         onSubmit:values=>{
           loggedin(values, null, 2)
+          
         }
       })
 
       
-    
-      const [status,setStatus]  = useState( '' );
-      const [forgetPWDstatus, setforgetPWDstatus] = useState('')
-
-      let history = useNavigate()
+      
 
       let loggedin = async(val)=>{  
         try {
           let res =  await axios.post(env.API_URL+'users/login',val)
             if(res)
             {
-              setStatus(res.data.message)
-              if(res.data.message === "Login successfully"){
-               
-                history('/Home') 
+              
+              if(res.data.message === "Login successfully"){              
+                toast.success(res.data.message)
+                console.log(res.data)
+                localStorage.setItem('name',res.data.data.name)
+                localStorage.setItem('email',res.data.data.email)
+                localStorage.setItem('phone',res.data.data.phone)
+                localStorage.setItem('auth', true)
+                history('/Home')
               }
               else{
-                  setStatus(res.data.message)
+                  
+                  toast.error(res.data.message)
               }
                    
             }
             else{
-              setStatus(res.data.message)         
+              toast.error(res.data.message)        
             } 
         } catch (error) {
           alert("error occured please contact the developer")
@@ -66,7 +74,7 @@ function Signin() {
         }),
         onSubmit:values=>{
             // alert(values.email)
-
+            
             let val = values.email
             forgetpwd(val, null, 2)
         }
@@ -78,11 +86,17 @@ function Signin() {
        
         try {
           let res =  await axios.post(env.API_URL+'users/forget-password',object)
-          setforgetPWDstatus(res.data.message)
-                
+          
+          if(res == 'Please check mail to reset password'){
+            toast.success(res.data.message)
+          }
+          else{
+            toast.error(res.data.message)
+          }
         } catch (error) {
           alert("error occured please contact the developer")
           console.log(error)
+          
         } 
       }
 
@@ -113,7 +127,7 @@ function Signin() {
                   value={formik.values.password}/>
         {formik.touched.password && formik.errors.password?(<div style={{color:"red"}}>{formik.errors.password}</div>):null}
             </div>
-            <div id='login-status'>{status}</div>
+            
             
             
             <a href='#' data-bs-toggle="modal" data-bs-target="#staticBackdrop" className="text-decoration-none">
@@ -159,7 +173,7 @@ function Signin() {
             {forms.touched.email && forms.errors.email?(<div style={{color:"red"}}>{forms.errors.email}</div>):null}
             
         </div>
-        <p>{forgetPWDstatus}</p>
+        
     </div>
                     <div className="modal-footer">
                        

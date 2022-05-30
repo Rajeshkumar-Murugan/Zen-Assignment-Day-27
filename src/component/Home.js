@@ -1,7 +1,6 @@
 import React from 'react';
 import ControlledCarousel from './carousel_img'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import NewestPrint from './NewestPrint';
 import BestSeller from './BestSeller';
 import Head from './Head';

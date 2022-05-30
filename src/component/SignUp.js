@@ -4,11 +4,13 @@ import {useFormik} from 'formik'
 import *as yup from 'yup'
 import {Link} from 'react-router-dom'
 import env from "react-dotenv";
-
+import { toast } from 'react-toastify';
+import {useNavigate} from 'react-router-dom'
 
 function SignUp() {
-    const [status,setStatus]  = useState( '' );
-
+  
+  let history = useNavigate()
+  
     const formik = useFormik({
       initialValues:{ 
         name:'',
@@ -31,9 +33,9 @@ function SignUp() {
   // Adding data using axios
   let save = async(val)=>{
     try {
-      let res =  await axios.post(env.API_URL+'users/register',val)     
-      setStatus(res.data.message)   
-        
+      let res =  await axios.post(env.API_URL+'users/register',val) 
+      toast.success(res.data.message)    
+      history('/')          
     } catch (error) {
       alert("error occured please contact the developer")
       console.log(error)
@@ -41,11 +43,11 @@ function SignUp() {
   }
   return (
     <div>
-        <div className='container d-flex justify-content-center'>
+        <div className='container d-flex justify-content-center' style={{width:"400px"}}>
     <div className='row'>
-    <img src='https://cdn.dribbble.com/users/3645053/screenshots/10765315/10register_done2.gif' className="w-50 p-3 mx-auto"/>
+    <img src='https://cloudcdn.taiwantradeshows.com.tw/2018/shoetech/e-letter2/images/300x250_en.gif' className="mx-auto" style={{height:"300px", padding:'0px'}}/>
 
-    <h4 className='text-center contactTitle'>Sign In</h4>
+    <h4 className='text-center contactTitle'>Sign Up</h4>
          <form  onSubmit={formik.handleSubmit}>
          <div className="mb-3">
             <label htmlFor="recipient-name" className="col-form-label">Name:</label>
@@ -82,9 +84,7 @@ function SignUp() {
                   value={formik.values.password}/>
         {formik.touched.password && formik.errors.password?(<div style={{color:"red"}}>{formik.errors.password}</div>):null}
             </div>
-            <p id="signup-status">
-            {status}
-            </p>
+            
             <div className="modal-footer">
             
             <div class="mx-auto">
@@ -99,6 +99,7 @@ function SignUp() {
             
             
         </div>
+        <br/>
         </form>
 
         </div>

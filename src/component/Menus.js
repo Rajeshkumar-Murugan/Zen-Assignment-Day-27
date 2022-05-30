@@ -30,6 +30,12 @@ function Menus() {
                       <a className="nav-link active" aria-current="page" href="#">Add Model</a>
                       </Link> 
                     </li>
+
+                    <li className="nav-item">
+                    <Link to="/Profile">                      
+                      <a className="nav-link active" aria-current="page" href="#">Profile</a>
+                      </Link> 
+                    </li>
                   </ul>
                   
                 </div>
