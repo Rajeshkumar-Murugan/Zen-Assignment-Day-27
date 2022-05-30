@@ -2,6 +2,9 @@ import React from 'react';
 import {useFormik} from 'formik'
 import *as yup from 'yup'
 import './Footerstyle.css'
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import env from "react-dotenv";
 
 function Footer() {
 
@@ -18,15 +21,25 @@ function Footer() {
       name:yup.string().required('Name is required'),
       mobile:yup.string().matches(/^(\+\d{1,3}[- ]?)?\d{10}$/gm, "Invalid Number").required('Mobile Number is required'),
       email:yup.string().email('Invalid email address').required('Email is required'),
-      address:yup.string().required('Address is required'),
       message:yup.string().required('Message is required'),
       
       
     }),
     onSubmit:values=>{
-      alert(JSON.stringify(values, null, 2))
+      sendmail(values, null, 2)
+         
     }
   })
+
+  let sendmail = async(val)=>{  
+    try {
+      let res =  await axios.post(env.API_URL+'users/Message',val)
+      toast.success('Mail sent') 
+    } catch (error) {
+      toast.error('Mail not sent') 
+      console.log(error)
+    } 
+  }
 
 
   return <div className=' footer'>    
@@ -66,8 +79,7 @@ function Footer() {
                   className="form-control" placeholder='Enter address'
                   onChange={formik.handleChange}
                   value={formik.values.address}/>
-                  {formik.touched.address && formik.errors.address?(<div style={{color:"red"}}>{formik.errors.address}</div>
-                  ):null}
+                  
               
               <label for="message">Message</label>
                 <input id="message" name="message" type="textarea"
