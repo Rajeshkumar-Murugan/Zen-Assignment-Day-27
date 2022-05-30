@@ -147,7 +147,7 @@ function Categories() {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cart Items</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -157,20 +157,26 @@ function Categories() {
 
         
 <section className="CartItems">
- <b>Cart Items:</b>
- <div className="cartlist">
+ 
+ <div className="cartlist ">
   {
       
     cartItems.map(e=>{
       return<div  class="Cartdata">
         
-    <div className="Itemtitle"> 
-    <img src={e.Image} /><br/>
-    {e.name}<br/>Price: {e.price}
-    </div>
+    <div className="Itemtitle d-flex justify-content-center"> 
+    
 
-    <div> 
+    <div class="card" style={{width:"18rem"}}>
+  <img class="card-img-top" src={e.Image}alt="Card image cap"/>
+  <div class="card-body">
+    <h5 class="card-title">{e.name}</h5>
+    <p class="card-text">Price: {e.price} /- (Incl. of all taxes)</p>
+    
     <button className="btn btn-danger" onClick={()=>deleteItem(e)}> Delete</button>
+  </div>
+</div>
+    
     </div> 
       </div>
       
