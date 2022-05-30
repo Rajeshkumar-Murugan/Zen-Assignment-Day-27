@@ -75,14 +75,14 @@ function Footer() {
               
 
               <label for="address">Address</label>
-                <input id="address" name="address" type="textarea"
+                <textarea id="address" name="address" type="text"
                   className="form-control" placeholder='Enter address'
                   onChange={formik.handleChange}
                   value={formik.values.address}/>
                   
               
               <label for="message">Message</label>
-                <input id="message" name="message" type="textarea"
+                <textarea id="message" name="message" type="text"
                   className="form-control" placeholder='Enter message'
                   onChange={formik.handleChange}
                   value={formik.values.message}/>

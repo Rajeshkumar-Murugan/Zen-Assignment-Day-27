@@ -13,12 +13,31 @@ function Categories() {
   let [data,setData] =useState([])
   let Navigate = useNavigate()
   
+  let[cartItems,setCartItems]=useState([])
+  let [cart, setCart] = useState(0)
+  let [total,setTotal] =useState(0)
+
   //Fetching the data from mockapi starts
   useEffect(() => {
     getData()
     },[])
   
   
+    function addToCart(item){
+      setCart(cart+1);
+      setTotal(prev=>prev+item.price)
+      cartItems.push(item);
+      console.log(cartItems)
+    }
+  
+  
+    function deleteItem(e){
+      cartItems.splice(cartItems.indexOf(e),1);
+      setCart(cart-1);
+      setTotal(prev=>prev-e.price)
+  
+    }
+
   //Fetching using Axios
   let getData = async()=>{
     try {
@@ -51,9 +70,32 @@ function Categories() {
 
   return (<div>
     <Head></Head>
+    
+    
+    <div  className='fixed-top d-flex justify-content-end' style={{padding:'0' }}>
+
+                        <button class="btn btn-outline-dark"  type="button"  style={{ backgroundColor:'white' }} data-toggle="modal" data-target="#exampleModal">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">{cart}</span>
+                            <br/>Price: <b>${total}</b> 
+                        </button>
+
+                        
+
+
+
+
+                        
+                    </div> 
+                    
+                    
     <div className='container-fluid'>
+     
+                    
+                    
       <div className='row'>
-        
+     
          {
            data.map((e,i)=>{
 
@@ -75,7 +117,9 @@ function Categories() {
               
               <div className='cardbtn'>   
               
-            
+              <a class="btn btn-outline-dark mt-auto" onClick={()=>addToCart({name:e.Name, price:Number(e.Price),Image:e.Imageone})}>Add to cart</a> &nbsp;&nbsp;
+              
+             
              <Button variant="success edit" onClick={()=>{
               Navigate('/EditModel/'+e._id) 
              }}>Edit</Button> &nbsp;
@@ -95,6 +139,55 @@ function Categories() {
         
       </div> 
     </div>
+
+    
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div>
+
+        
+<section className="CartItems">
+ <b>Cart Items:</b>
+ <div className="cartlist">
+  {
+      
+    cartItems.map(e=>{
+      return<div  class="Cartdata">
+        
+    <div className="Itemtitle"> 
+    <img src={e.Image} /><br/>
+    {e.name}<br/>Price: {e.price}
+    </div>
+
+    <div> 
+    <button className="btn btn-danger" onClick={()=>deleteItem(e)}> Delete</button>
+    </div> 
+      </div>
+      
+    })
+  }
+ </div>
+</section>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
       <Footer></Footer>
 
   </div>);

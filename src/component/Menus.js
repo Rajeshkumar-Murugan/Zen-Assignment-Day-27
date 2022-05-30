@@ -1,8 +1,17 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import {Link} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 function Menus() {
-  return <div className='row'>
+
+  let history = useNavigate()
+  const [logout, setLogout] = useState(false)
+
+  useEffect(() => {
+    if(!localStorage.getItem('auth'))   history('/login')
+  }, [logout])
+
+  return <div className='row '>
 
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <div className="container-fluid">
@@ -40,7 +49,18 @@ function Menus() {
                   
                 </div>
               </div>
+              <button type="button" class="btn btn-primary" onClick={(e)=>{
+               e.preventDefault()
+               localStorage.removeItem('auth')
+               localStorage.removeItem('email')
+               localStorage.removeItem('phone')
+               localStorage.removeItem('name')
+               setLogout(true)
+             }}>Logout</button>
             </nav>
+            
+
+            
   </div>;
 }
 
