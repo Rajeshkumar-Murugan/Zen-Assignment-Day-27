@@ -2,6 +2,7 @@ import axios from 'axios';
 import {React, useState, useEffect} from 'react';
 import {useNavigate,useParams} from 'react-router-dom'
 import env from "react-dotenv";
+import Head from './Head';
 
 function EditModel() {
   
@@ -75,8 +76,11 @@ try {
 }
 
 
-  return <div className='container'>
-    
+  return <>
+  <Head/>
+  <div className='container'>
+        
+
       <div className="row g-3">
       <h4>Edit Model</h4>
   <div className="col-md-6">
@@ -150,7 +154,9 @@ try {
   </div>
 </div>
 
-  </div>;
+  </div>
+  
+  </>;
 }
 
 export default EditModel;

@@ -173,8 +173,12 @@ function Categories() {
     <h5 class="card-title">{e.name}</h5>
     <p class="card-text">Price: {e.price} /- (Incl. of all taxes)</p>
     
+
+    
     <button className="btn btn-danger" onClick={()=>deleteItem(e)}> Delete</button>
   </div>
+  
+
 </div>
     
     </div> 
@@ -186,7 +190,10 @@ function Categories() {
 </section>
 </div>
       </div>
+      <b class="card-text mx-auto">Total: {total} /- (Incl. of all taxes)</b>
+
       <div class="modal-footer">
+
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
