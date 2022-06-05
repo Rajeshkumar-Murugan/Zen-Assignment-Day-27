@@ -103,7 +103,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #500c6ffa;
+  background-color: #ffb74d;
   .brand {
     display: flex;
     align-item: center;
@@ -121,7 +121,7 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color: #000000;
     border-radius: 2rem;
     padding: 3rem 5rem;
     input {
