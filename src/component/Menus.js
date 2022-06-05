@@ -6,10 +6,17 @@ function Menus() {
 
   let history = useNavigate()
   const [logout, setLogout] = useState(false)
+  const [isadmin, setIsadmin] = useState(false)
 
   useEffect(() => {
     if(!localStorage.getItem('auth'))   history('/login')
   }, [logout])
+
+  useEffect(() => {
+    if(localStorage.getItem('admin') === "true"){
+      setIsadmin(true)
+    }
+    },[])
 
   return <div className='row '>
 
@@ -33,12 +40,12 @@ function Menus() {
                       </Link> 
                     </li>
                     
-                    
+                    {isadmin?     
                     <li className="nav-item">
                     <Link to="/AddModel">                      
                       <a className="nav-link active" aria-current="page" href="#">Add Model</a>
                       </Link> 
-                    </li>
+                    </li>:""}
 
                     <li className="nav-item">
                     <Link to="/Profile">                      
@@ -55,6 +62,7 @@ function Menus() {
                localStorage.removeItem('email')
                localStorage.removeItem('phone')
                localStorage.removeItem('name')
+               localStorage.removeItem('admin')
                setLogout(true)
              }}>Logout</button>
             </nav>

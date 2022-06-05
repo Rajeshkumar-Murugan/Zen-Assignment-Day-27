@@ -16,18 +16,22 @@ function Categories() {
   let[cartItems,setCartItems]=useState([])
   let [cart, setCart] = useState(0)
   let [total,setTotal] =useState(0)
+  const [isadmin, setIsadmin] = useState(false)
+
 
   //Fetching the data from mockapi starts
   useEffect(() => {
     getData()
+    if(localStorage.getItem('admin') === "true"){
+      setIsadmin(true)
+    }
     },[])
   
-  
+    
     function addToCart(item){
       setCart(cart+1);
       setTotal(prev=>prev+item.price)
       cartItems.push(item);
-      console.log(cartItems)
     }
   
   
@@ -39,11 +43,15 @@ function Categories() {
     }
 
   //Fetching using Axios
+  let IsAdmin = false
   let getData = async()=>{
+    IsAdmin =  localStorage.getItem('admin')
     try {
     
       let modeldata = await axios.get(env.API_URL)
       let modelvalue = modeldata.data.data
+      
+
     setData(modelvalue)
     } catch (error) {
       alert("Error Occured while fetching the data please contact developer")
@@ -66,12 +74,16 @@ function Categories() {
     }
   }
 
+
   //Fetching the data from mockapi ends
+  
+
+  
 
   return (<div>
     <Head></Head>
     
-    
+    {isadmin? "":
     <div  className='fixed-top d-flex justify-content-end' style={{padding:'0' }}>
 
                         <button class="btn btn-outline-dark"  type="button"  style={{ backgroundColor:'white' }} data-toggle="modal" data-target="#exampleModal">
@@ -80,20 +92,10 @@ function Categories() {
                             <span class="badge bg-dark text-white ms-1 rounded-pill">{cart}</span>
                             <br/>Price: <b>${total}</b> 
                         </button>
-
-                        
-
-
-
-
-                        
-                    </div> 
-                    
+                    </div> }
                     
     <div className='container-fluid'>
-     
-                    
-                    
+           
       <div className='row'>
      
          {
@@ -115,17 +117,26 @@ function Categories() {
                   <p>PRICE:{e.Price}/- (Incl. of all taxes)</p>
                  </Card.Text>
               
-              <div className='cardbtn'>   
+                 <div className='cardbtn'>  
               
-              <a class="btn btn-outline-dark mt-auto" onClick={()=>addToCart({name:e.Name, price:Number(e.Price),Image:e.Imageone})}>Add to cart</a> &nbsp;&nbsp;
-              
-             
-             <Button variant="success edit" onClick={()=>{
+                 {isadmin? 
+                                   
+           (<div>
+            <Button variant="success edit" onClick={()=>{
               Navigate('/EditModel/'+e._id) 
              }}>Edit</Button> &nbsp;
+            
+            <Button variant="danger delete" onClick={()=>handledelete(e._id)}>Delete</Button>
+            </div>):
+                             ( <a class="btn btn-outline-dark mt-auto" onClick={()=>addToCart({name:e.Name, price:Number(e.Price),Image:e.Imageone})}>Add to cart</a>)
 
-              <Button variant="danger delete" onClick={()=>handledelete(e._id)}>Delete</Button>
-              </div> 
+            }
+            
+            </div>
+              
+            
+             
+             
               
               </Card.Body>
               </Card>

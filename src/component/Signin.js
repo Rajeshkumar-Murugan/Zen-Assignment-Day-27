@@ -44,11 +44,18 @@ function Signin() {
               
               if(res.data.message === "Login successfully"){              
                 toast.success(res.data.message)
-                console.log(res.data)
+                console.log(res.data.data._id)
                 localStorage.setItem('name',res.data.data.name)
                 localStorage.setItem('email',res.data.data.email)
                 localStorage.setItem('phone',res.data.data.phone)
                 localStorage.setItem('auth', true)
+                if(res.data.data._id === '629bf09a65cd9edec3c64a68')
+                {
+                  localStorage.setItem('admin', true)
+                }
+                else{
+                  localStorage.setItem('admin', false)
+                }
                 history('/Home')
               }
               else{
