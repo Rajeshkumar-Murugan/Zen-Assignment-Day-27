@@ -6,6 +6,7 @@ import axios from 'axios';
 import Head from './Head';
 import Footer from './Footer';
 import env from "react-dotenv";
+import Loading from './Loading';
 
 
 function Categories() {
@@ -17,7 +18,7 @@ function Categories() {
   let [cart, setCart] = useState(0)
   let [total,setTotal] =useState(0)
   const [isadmin, setIsadmin] = useState(false)
-
+const [isloading, setisloading] = useState(true)
 
   //Fetching the data from mockapi starts
   useEffect(() => {
@@ -50,7 +51,7 @@ function Categories() {
     
       let modeldata = await axios.get(env.API_URL)
       let modelvalue = modeldata.data.data
-      
+      {modelvalue?setisloading(false):setisloading(true)}
 
     setData(modelvalue)
     } catch (error) {
@@ -74,12 +75,7 @@ function Categories() {
     }
   }
 
-
   //Fetching the data from mockapi ends
-  
-
-  
-
   return (<div>
     <Head></Head>
     
@@ -94,10 +90,12 @@ function Categories() {
                         </button>
                     </div> }
                     
-    <div className='container-fluid'>
-           
-      <div className='row'>
-     
+ 
+  <div className='container-fluid'>
+  {isloading ? 
+ <Loading/>
+:
+      <div className='row'>     
          {
            data.map((e,i)=>{
 
@@ -149,7 +147,9 @@ function Categories() {
         
         
       </div> 
+}
     </div>
+    
 
     
 

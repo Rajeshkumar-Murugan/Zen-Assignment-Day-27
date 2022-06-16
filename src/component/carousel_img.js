@@ -19,6 +19,7 @@ function ControlledCarousel() {
                   className="d-block w-100 slideshow"
                   src="https://1.bp.blogspot.com/-AHO8MjzsjIk/WQejQu2zY8I/AAAAAAAAXy0/GoWii4ruQ6klI5keJSVKOqcV5Cr5wy-awCEw/s1600/22.jpg"
                   alt="First slide"
+                  
                 />
                 <Carousel.Caption>
                   <h3>First slide label</h3>
@@ -29,7 +30,7 @@ function ControlledCarousel() {
               <Carousel.Item>
                 <img
                   className="d-block w-100 slideshow"
-                  src="https://i.pinimg.com/originals/f9/8f/a7/f98fa75d698dd4ebec9dc80892cd015e.jpg"
+                  src="https://www.gambody.com/blog/wp-content/uploads/2021/06/Marvel-3D-models-for-printing-Gambody-blog.jpg"
                   alt="Second slide"
                 />
 
@@ -41,7 +42,7 @@ function ControlledCarousel() {
               <Carousel.Item>
                 <img
                   className="d-block w-100 slideshow"
-                  src="https://www.gambody.com/image/509/02d0_980x500.png"
+                  src="https://i.pinimg.com/originals/67/24/8d/67248d05032f479146ff530ed3a6e6e5.png"
                   alt="Third slide"
                 />
 
@@ -54,7 +55,7 @@ function ControlledCarousel() {
               <Carousel.Item>
                 <img
                   className="d-block w-100 slideshow "
-                  src="https://i.pinimg.com/564x/85/4d/9c/854d9c2273dc83a20f2439ab976b466e.jpg"
+                  src="https://www.gambody.com/blog/wp-content/uploads/2021/04/3D-printed-Transformers-Gambody-blog.jpg"
                   alt="Fourth slide"
                 />
 
@@ -67,7 +68,7 @@ function ControlledCarousel() {
               <Carousel.Item>
                 <img
                   className="d-block w-100 slideshow"
-                  src="https://www.gambody.com/blog/wp-content/uploads/2018/09/Iron-Man-2-Juan.png"
+                  src="https://www.sculpteo.com/wp-content/uploads/2020/01/Blog-headline-4-1-1.jpg"
                   alt="Third slide"
                 />
 

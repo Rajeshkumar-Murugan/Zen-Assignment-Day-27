@@ -63,6 +63,7 @@ function Menus() {
                localStorage.removeItem('phone')
                localStorage.removeItem('name')
                localStorage.removeItem('admin')
+			   localStorage.removeItem('id')
                setLogout(true)
              }}>Logout</button>
             </nav>
