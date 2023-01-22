@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import {useFormik} from 'formik'
 import *as yup from 'yup'
 import './Footerstyle.css'
@@ -7,6 +7,7 @@ import axios from 'axios';
 import env from "react-dotenv";
 
 function Footer() {
+  const [Loading, setLoading] = useState(`Send Mail`)
 
   const formik = useFormik({
     initialValues:{         
@@ -27,7 +28,9 @@ function Footer() {
     }),
     onSubmit:values=>{
       sendmail(values, null, 2)
-         
+      setLoading(<div class="spinner-border text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>)
     }
   })
 
@@ -35,8 +38,10 @@ function Footer() {
     try {
       let res =  await axios.post(env.API_URL+'users/Message',val)
       toast.success('Mail sent') 
+      setLoading('Send Mail')
     } catch (error) {
       toast.error('Mail not sent') 
+      setLoading('Send Mail')
       console.log(error)
     } 
   }
@@ -89,11 +94,13 @@ function Footer() {
                   {formik.touched.message && formik.errors.message?(<div style={{color:"red"}}>{formik.errors.message}</div>
                   ):null}
 
-                  
-                  
-                <button type='submit' className='btn btn-primary'>
-                  submit
+                  <br/>
+                  <div className='mx-auto' style={{width:150}}>
+                  <button type='submit' className='btn btn-primary'>
+                  {Loading}
                   </button>
+                  </div>
+                
 
               </form>
 

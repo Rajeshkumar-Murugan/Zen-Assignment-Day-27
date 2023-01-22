@@ -18,9 +18,9 @@ function Menus() {
     }
     },[])
 
-  return <div className='row '>
+  return <div className='row'>
 
-<nav className="navbar navbar-expand-lg navbar-light bg-light">
+<nav className="navbar navbar-expand-lg navbar-light bg-light ">
               <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
@@ -55,8 +55,7 @@ function Menus() {
                   </ul>
                   
                 </div>
-              </div>
-              <button type="button" class="btn btn-primary" onClick={(e)=>{
+                <button type="button" class="btn btn-primary" onClick={(e)=>{
                e.preventDefault()
                localStorage.removeItem('auth')
                localStorage.removeItem('email')
@@ -66,6 +65,8 @@ function Menus() {
 			   localStorage.removeItem('id')
                setLogout(true)
              }}>Logout</button>
+              </div>
+             
             </nav>
             
 

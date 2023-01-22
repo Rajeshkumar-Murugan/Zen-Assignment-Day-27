@@ -49,5 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "ID: admin@admin.com",
+  "main": "index.js",
+  "author": "Rajesh Kumar",
+  "license": "ISC"
 }

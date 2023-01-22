@@ -7,7 +7,7 @@ function Head() {
 
 
 
-  return (<div className='container-fluid'>
+  return (<div className='container-fluid fixed-top'>
       <div className='row header'>
         <div className="d-flex flex-row align-items-center">          
               <div className='col logoimage'>  
@@ -21,8 +21,10 @@ function Head() {
              
              
              
-          </div>        
+          </div >        
            <Menus fixed="top"/>
+          
+   
 
   </div>);
 }

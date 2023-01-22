@@ -11,7 +11,8 @@ import styled from "styled-components";
 function SignUp() {
   
   let history = useNavigate()
-  
+  const [Loading, setLoading] = useState(`Sign Up`)
+
     const formik = useFormik({
       initialValues:{ 
         name:'',
@@ -27,7 +28,9 @@ function SignUp() {
       }),
       onSubmit:values=>{
         save(values, null, 2)
-  
+        setLoading(<div class="spinner-border text-warning" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>)
       }
     })
   
@@ -35,10 +38,12 @@ function SignUp() {
   let save = async(val)=>{
     try {
       let res =  await axios.post(env.API_URL+'users/register',val) 
-      toast.success(res.data.message)    
+      toast.success(res.data.message)  
+      setLoading(`Sign Up`)  
       history('/')          
     } catch (error) {
       alert("error occured please contact the developer")
+      setLoading(`Sign Up`) 
       console.log(error)
     } 
   }
@@ -83,7 +88,7 @@ function SignUp() {
                   value={formik.values.password}/>
         
           
-            <button type='submit' className="btn btn-primary" >Sign Up</button>&nbsp;&nbsp;
+            <button type='submit' className="btn btn-primary" >{Loading}</button>&nbsp;&nbsp;
             <span>
           Already have an account? <Link to="/">Login</Link>
         </span>

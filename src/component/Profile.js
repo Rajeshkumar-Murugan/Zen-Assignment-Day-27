@@ -5,9 +5,11 @@ function Profile() {
   return (
     <div>
       <Head/>
-      <h4 className='text-center contactTitle'>Profile</h4> 
+      
         <div className="d-flex justify-content-center">
-          <div className='d-flex-column'>
+          
+          <div className='d-flex-column pushdown'>
+          <h4 className='text-center '>Profile</h4> 
         <p><b>Name:</b> {localStorage.getItem('name')}</p>
         <p><b>Email:</b> {localStorage.getItem('email')}</p>
         <p><b>Phone:</b> {localStorage.getItem('phone')}</p>

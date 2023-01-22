@@ -13,6 +13,7 @@ import styled from "styled-components";
 
 function Signin() {
   let history = useNavigate()
+    const [Loading, setLoading] = useState(`Login`)
 
     useEffect(() => {
       if(localStorage.getItem('auth')) history('/Home')
@@ -29,7 +30,9 @@ function Signin() {
         }),
         onSubmit:values=>{
           loggedin(values, null, 2)
-          
+          setLoading(<div class="spinner-border text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>)
         }
       })
 
@@ -59,12 +62,13 @@ function Signin() {
                 history('/Home')
               }
               else{
-                  
+                setLoading(`Login`)
                   toast.error(res.data.message)
               }
                    
             }
             else{
+              setLoading(`Login`)
               toast.error(res.data.message)        
             } 
         } catch (error) {
@@ -138,7 +142,9 @@ function Signin() {
                 Forget password
                 </a>
 
-            <button type="sumbit" className="btn btn-primary">Login</button>
+            <button type="sumbit" className="btn btn-primary">
+              
+              {Loading}</button>
 
             <span>
                 Create new Account <Link to="/Sign-up">Sign Up</Link>

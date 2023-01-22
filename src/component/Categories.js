@@ -80,7 +80,7 @@ const [isloading, setisloading] = useState(true)
     <Head></Head>
     
     {isadmin? "":
-    <div  className='fixed-top d-flex justify-content-end' style={{padding:'0' }}>
+    <div  className='fixed-top d-flex justify-content-end pushdown' style={{padding:'0' }}>
 
                         <button class="btn btn-outline-dark"  type="button"  style={{ backgroundColor:'white' }} data-toggle="modal" data-target="#exampleModal">
                             <i class="bi-cart-fill me-1"></i>
@@ -91,7 +91,7 @@ const [isloading, setisloading] = useState(true)
                     </div> }
                     
  
-  <div className='container-fluid'>
+  <div className='container-fluid pushdown'>
   {isloading ? 
  <Loading/>
 :

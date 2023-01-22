@@ -11,19 +11,19 @@ function ControlledCarousel() {
   
     return (
     <div className='row'>
-    <div className='col-12 imagesScrolls'>
+    <div className='col-12 imagesScrolls '>
               
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
                 <img
-                  className="d-block w-100 slideshow"
+                  className="d-block w-100 slideshow "
                   src="https://1.bp.blogspot.com/-AHO8MjzsjIk/WQejQu2zY8I/AAAAAAAAXy0/GoWii4ruQ6klI5keJSVKOqcV5Cr5wy-awCEw/s1600/22.jpg"
                   alt="First slide"
                   
                 />
                 <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  <h3>Avengers Action Figure</h3>
+                  {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                 </Carousel.Caption>
               </Carousel.Item>
 
@@ -35,8 +35,8 @@ function ControlledCarousel() {
                 />
 
                 <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <h3>Marvel Action Figure</h3>
+                  {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
@@ -47,8 +47,8 @@ function ControlledCarousel() {
                 />
 
                 <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  <h3>Action Figure</h3>
+                  {/* <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
                 </Carousel.Caption>
               </Carousel.Item>
 
@@ -60,24 +60,36 @@ function ControlledCarousel() {
                 />
 
                 <Carousel.Caption>
-                  <h3>Fourth slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  <h3>Transformers Action Figure</h3>
+                  {/* <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
                 </Carousel.Caption>
               </Carousel.Item>
 
               <Carousel.Item>
                 <img
                   className="d-block w-100 slideshow"
-                  src="https://www.sculpteo.com/wp-content/uploads/2020/01/Blog-headline-4-1-1.jpg"
+                  src="https://i.pinimg.com/originals/14/1e/52/141e524c47c63f02036b18f55002fc6a.png"
                   alt="Third slide"
                 />
 
                 <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  <h3>Batman Action Figure</h3>
+                  {/* <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
                 </Carousel.Caption>
               </Carousel.Item>
 
+              <Carousel.Item>
+                <img
+                  className="d-block w-100 slideshow"
+                  src="https://i.ytimg.com/vi/rCXehTpuyn8/maxresdefault.jpg"
+                  alt="Third slide"
+                />
+
+                <Carousel.Caption>
+                  <h3>Pokemon Action Figure</h3>
+                  {/* <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
+                </Carousel.Caption>
+              </Carousel.Item>
       </Carousel>
       </div>
      </div>  

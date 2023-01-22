@@ -9,7 +9,9 @@ import Footer from './Footer';
 function Home() {
   return <div>
     <Head></Head>
-      <div id='styleprop'>   
+  
+   
+      <div id='styleprop' className='pushdown'>   
      <div className='container'>          
          <ControlledCarousel />
          <div className='row'>            
